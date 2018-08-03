@@ -35,18 +35,24 @@ body {
   left: 5px;
 }
 
-.video {
+.video, video2 {
   background-color: #efefef;
 }
 
-.video-responsive .video {
+.video-responsive .video, .video-responsive .video2 {
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
+}
+.video-responsive .video {
   width: 100%;
 }
-
+.video2 {
+  margin: 0 auto;
+  right: 0;
+  width: 83%;
+}
 .footer {
   padding: 1em 0;
   background: #efefef;

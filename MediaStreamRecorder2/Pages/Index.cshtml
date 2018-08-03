@@ -7,9 +7,9 @@
 <div class="content">
   <header class="title wrap">
     <h1 class="title_main text-center">
-      <div class="col-md-12">
-        <img src="images/Ultebra_2.png" class="img-fluid" alt="Ultebra Solutions">
-      </div>
+      <span class="col-md-12">
+          <img src="images/Ultebra_2.png" class="img-fluid" alt="Ultebra Solutions">
+      </span>
     </h1>
   </header>
 
@@ -22,11 +22,12 @@
       <div class="column col-4 col-xs-12">
         <div class="card j-card">
           <div class="card-image">
+            <input id="videoIOS" type="file"  name="Video" accept="video/*" capture>
             <div class="video-responsive">
-              <video id="videoRecord" class=" j-video_local video" controls muted></video>
+              <video id="videoRecord" class="j-video_local video" controls muted webkit-playsinline playsinline></video>
             </div>
           </div>
-
+          
           <div class="source">
             <div class="form-group">
               <select id="j-audioSource" class="invisible form-select select-sm"></select>
@@ -40,13 +41,13 @@
               <select id="j-mimeTypes" class="invisible form-select select-sm"></select>
             </div>
           </div>
-
+          
           <div class="card-footer">
             <h5 class="card-title">Recording</h5>
-            <div class="btn-group btn-group-block">
+            <div id="record" class="btn-group btn-group-block">
               <button class="btn j-start">Start</button>
               <button class="btn j-pause" disabled>Pause</button>
-              <button class="btn j-resume" disabled>Resume</button>
+               <button class="btn j-resume" disabled>Resume</button>
               <button class="btn j-stop" disabled>Stop</button>
             </div>
           </div>
@@ -56,8 +57,13 @@
       <div class="column col-4 col-xs-12">
         <div class="card j-result-card">
           <div class="card-image">
-            <div class="video-responsive">
-              <canvas id="canvas" class="j-video_local video"></canvas>
+            <input id="cameraIOS" type="file" name="Camera" accept="image/*" capture>
+            <div class="video-responsive photo">
+              <canvas id="canvas" class="j-video_local video2"></canvas>
+            </div>
+            <div id="btnPictureIos" class="btn-group">
+              <button id="playVideoIos" class="btn" onClick="seePicture(event, this)">See</button>
+              <button id="donwloadVideoIos" class="btn" onClick="downloadPicture(event, this)">Donwload</button>
             </div>
           </div>
           <div class="card-footer">
@@ -75,18 +81,22 @@
         <div class="card j-result-card">
           <div class="card-image">
             <div class="video-responsive">
-              <video class="j-video_result video" controls></video>
+              <video id="videoSee" class="j-video_result video3" controls></video>
+            </div>
+            <div id="btnVideoIos" class="btn-group">
+              <button id="playVideoIos" class="btn" onClick="seeVideo(event, this)">Play</button>
+              <button id="donwloadVideoIos" class="btn" onClick="downloadVideo(event, this)">Donwload</button>
             </div>
           </div>
 
-          <div class="card-footer">
-            <h5 class="card-title">Record</h5>
-            <div class="btn-group btn-group-block">
-              <button class="btn j-clear" disabled>Clear</button>
-              <button class="btn j-download" disabled>Download</button>
+            <div class="card-footer">
+              <h5 class="card-title">Record</h5>
+              <div class="btn-group btn-group-block">
+                <button class="btn j-clear" disabled>Clear</button>
+                <button class="btn j-download" disabled>Download</button>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </main>
@@ -99,6 +109,8 @@
 <script type="text/javascript">
   var ua = window.navigator.userAgent;
   var msie = ua.indexOf("MSIE ");
-  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))
-    document.write('<script src=cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5//bluebird.min.js;\/script>');
+  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    document.write('<script src=cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5//bluebird.min.js;><\/script>');
+    document.write('<script src=js/download.min.js;><\/script>');
+  }
 </script>
